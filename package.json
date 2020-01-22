@@ -24,7 +24,16 @@
     "dev:h5": "npm run build:h5 -- --watch",
     "dev:rn": "npm run build:rn -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
-    "dev:quickapp": "npm run build:quickapp -- --watch"
+    "dev:quickapp": "npm run build:quickapp -- --watch",
+    "format": "prettier --write \"./src/**/*.{js,jsx,json}\"",
+    "lint": "run-p eslint stylelint",
+    "eslint": "eslint --fix --ext .js,.jsx src",
+    "stylelint": "stylelint \"./src/**/*.{css,less}\" --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format && npm run lint && git add ."
+    }
   },
   "author": "",
   "license": "MIT",
@@ -63,6 +72,8 @@
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-hooks": "^1.6.1",
     "eslint-plugin-taro": "2.0.2",
+    "husky": "^4.2.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
     "stylelint": "^12.0.1",
     "stylelint-config-taro-rn": "2.0.2",

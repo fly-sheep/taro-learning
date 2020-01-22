@@ -3,6 +3,7 @@ import { Swiper, SwiperItem, View, Button } from '@tarojs/components'
 import { AtButton } from 'taro-ui'
 import './index.less'
 
+const a = 1
 export default class Index extends Component {
   config = {
     navigationBarTitleText: '首页'
