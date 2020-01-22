@@ -1,3 +1,18 @@
+const path = require('path')
+// NOTE 在 sass 中通过别名（@ 或 ~）引用需要指定路径
+const sassImporter = function(url) {
+  if (url[0] === '~' && url[1] !== '/') {
+    return {
+      file: path.resolve(__dirname, '..', 'node_modules', url.substr(1))
+    }
+  }
+
+  const reg = /^@styles\/(.*)/
+  return {
+    file: reg.test(url) ? path.resolve(__dirname, '..', 'src/styles', url.match(reg)[1]) : url
+  }
+}
+
 const config = {
   projectName: 'taro-learning-pro',
   date: '2020-1-8',
@@ -9,22 +24,41 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  babel: {
-    sourceMap: true,
-    presets: [
-      ['env', {
-        modules: false
-      }]
-    ],
-    plugins: [
-      'transform-decorators-legacy',
-      'transform-class-properties',
-      'transform-object-rest-spread'
-    ]
+  alias: {
+    '@/': path.resolve(__dirname, '..', 'src/')
   },
-  plugins: [],
-  defineConstants: {
+  // babel: {
+  //   sourceMap: true,
+  //   presets: [
+  //     [
+  //       'env',
+  //       {
+  //         modules: false
+  //       }
+  //     ]
+  //   ],
+  //   plugins: ['transform-decorators-legacy', 'transform-class-properties', 'transform-object-rest-spread']
+  // },
+  // plugins: [],
+  plugins: {
+    babel: {
+      sourceMap: true,
+      presets: [
+        ['env', {
+          modules: false
+        }]
+      ],
+      plugins: [
+        'transform-decorators-legacy',
+        'transform-class-properties',
+        'transform-object-rest-spread'
+      ]
+    },
+    less: {
+      importer: sassImporter
+    }
   },
+  defineConstants: {},
   mini: {
     postcss: {
       pxtransform: {
@@ -53,11 +87,7 @@ const config = {
       autoprefixer: {
         enable: true,
         config: {
-          browsers: [
-            'last 3 versions',
-            'Android >= 4.1',
-            'ios >= 8'
-          ]
+          browsers: ['last 3 versions', 'Android >= 4.1', 'ios >= 8']
         }
       },
       cssModules: {
@@ -71,7 +101,7 @@ const config = {
   }
 }
 
-module.exports = function (merge) {
+module.exports = function(merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'))
   }
