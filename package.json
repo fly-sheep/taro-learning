@@ -26,9 +26,9 @@
     "dev:qq": "npm run build:qq -- --watch",
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "format": "prettier --write \"./src/**/*.{js,jsx,json}\"",
-    "lint": "run-p eslint stylelint",
+    "lint": "run-p eslint",
     "eslint": "eslint --fix --ext .js,.jsx src",
-    "stylelint": "stylelint \"./src/**/*.{css,less}\" --fix"
+    "stylelint": "stylelint \"./src/**/*.{css,less,scss}\" --fix"
   },
   "husky": {
     "hooks": {

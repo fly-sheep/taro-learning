@@ -1,6 +1,7 @@
 const path = require('path')
 // NOTE 在 sass 中通过别名（@ 或 ~）引用需要指定路径
 const sassImporter = function(url) {
+  console.log(url)
   if (url[0] === '~' && url[1] !== '/') {
     return {
       file: path.resolve(__dirname, '..', 'node_modules', url.substr(1))
@@ -44,15 +45,14 @@ const config = {
     babel: {
       sourceMap: true,
       presets: [
-        ['env', {
-          modules: false
-        }]
+        [
+          'env',
+          {
+            modules: false
+          }
+        ]
       ],
-      plugins: [
-        'transform-decorators-legacy',
-        'transform-class-properties',
-        'transform-object-rest-spread'
-      ]
+      plugins: ['transform-decorators-legacy', 'transform-class-properties', 'transform-object-rest-spread']
     },
     less: {
       importer: sassImporter

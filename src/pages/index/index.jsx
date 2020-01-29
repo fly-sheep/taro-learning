@@ -42,7 +42,7 @@ export default class Index extends Component {
 
   render() {
     return (
-      <View className="index">
+      <View className="p-home">
         <Swiper className="test-h" indicatorColor="#999" indicatorActiveColor="#333" vertical circular indicatorDots autoplay>
           <SwiperItem>
             <View className="demo-text-1">1</View>
