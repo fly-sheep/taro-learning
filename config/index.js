@@ -1,18 +1,18 @@
 const path = require('path')
 // NOTE 在 sass 中通过别名（@ 或 ~）引用需要指定路径
-const sassImporter = function(url) {
-  console.log(url)
-  if (url[0] === '~' && url[1] !== '/') {
-    return {
-      file: path.resolve(__dirname, '..', 'node_modules', url.substr(1))
-    }
-  }
+// const sassImporter = function(url) {
+//   console.log(url)
+//   if (url[0] === '~' && url[1] !== '/') {
+//     return {
+//       file: path.resolve(__dirname, '..', 'node_modules', url.substr(1))
+//     }
+//   }
 
-  const reg = /^@styles\/(.*)/
-  return {
-    file: reg.test(url) ? path.resolve(__dirname, '..', 'src/styles', url.match(reg)[1]) : url
-  }
-}
+//   const reg = /^@styles\/(.*)/
+//   return {
+//     file: reg.test(url) ? path.resolve(__dirname, '..', 'src/styles', url.match(reg)[1]) : url
+//   }
+// }
 
 const config = {
   projectName: 'taro-learning-pro',
@@ -26,41 +26,48 @@ const config = {
   sourceRoot: 'src',
   outputRoot: 'dist',
   alias: {
-    '@/': path.resolve(__dirname, '..', 'src/')
+    '@': path.resolve(__dirname, '..', 'src')
   },
-  // babel: {
-  //   sourceMap: true,
-  //   presets: [
-  //     [
-  //       'env',
-  //       {
-  //         modules: false
-  //       }
-  //     ]
-  //   ],
-  //   plugins: ['transform-decorators-legacy', 'transform-class-properties', 'transform-object-rest-spread']
-  // },
+  babel: {
+    sourceMap: true,
+    presets: [
+      [
+        'env',
+        {
+          modules: false
+        }
+      ]
+    ],
+    plugins: ['transform-decorators-legacy', 'transform-class-properties', 'transform-object-rest-spread']
+  },
   // plugins: [],
-  plugins: {
-    babel: {
-      sourceMap: true,
-      presets: [
-        [
-          'env',
-          {
-            modules: false
-          }
-        ]
-      ],
-      plugins: ['transform-decorators-legacy', 'transform-class-properties', 'transform-object-rest-spread']
-    },
-    less: {
-      importer: sassImporter
-    }
-  },
+  // plugins: {
+  //   babel: {
+  //     sourceMap: true,
+  //     presets: [
+  //       [
+  //         'env',
+  //         {
+  //           modules: false
+  //         }
+  //       ]
+  //     ],
+  //     plugins: ['transform-decorators-legacy', 'transform-class-properties', 'transform-object-rest-spread']
+  //   },
+  //   less: {
+  //     importer: sassImporter
+  //   }
+  // },
   defineConstants: {},
+  // 小程序端专用配置
   mini: {
     postcss: {
+      autoprefixer: {
+        enable: true,
+        config: {
+          // autoprefixer 配置项
+        }
+      },
       pxtransform: {
         enable: true,
         config: {}
@@ -79,7 +86,41 @@ const config = {
         }
       }
     }
+    // TODO 自动引入全局样式
+    // webpackChain(chain) {
+    //   console.log(path.resolve(__dirname, '..', 'src/assets/css/variables.less'))
+    //   chain.merge({
+    //     module: {
+    //       rule: {
+    //         myloader: {
+    //           test: /\.less$/,
+    //           use: [
+    //             {
+    //               loader: 'less-loader',
+    //               options: {
+    //                 sourceMap: false,
+    //                 javascriptEnabled: true
+    //               }
+    //             },
+    //             {
+    //               loader: 'style-resources-loader',
+    //               options: {
+    //                 patterns: [
+    //                   path.resolve(__dirname, '..', 'src/assets/css/variables.less'),
+    //                   path.resolve(__dirname, '..', 'src/assets/css/function.less')
+    //                 ],
+    //                 injector: 'append'
+    //               }
+    //             }
+    //           ],
+    //           sideEffects: true
+    //         }
+    //       }
+    //     }
+    //   })
+    // }
   },
+  // H5 端专用配置
   h5: {
     publicPath: '/',
     staticDirectory: 'static',

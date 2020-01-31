@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import Index from '@/pages/index'
 import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
+// import '@/assets/css/index.less'
 import './app.less'
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -11,7 +12,7 @@ import './app.less'
 
 class App extends Component {
   config = {
-    pages: ['pages/index/index', 'pages/position/index', 'pages/personal/index'],
+    pages: ['pages/index/index', 'pages/position/index', 'pages/personal/index', 'pages/login/index'],
     window: {
       backgroundTextStyle: 'light', // 下拉 loading 的样式，仅支持 dark / light
       navigationBarBackgroundColor: '#c22b2b', // 导航栏背景颜色

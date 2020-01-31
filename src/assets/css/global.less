@@ -1,0 +1,145 @@
+html {
+    font-family: "Myriad Set Pro", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body,
+div,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+button,
+fieldset,
+form,
+input,
+legend,
+textarea,
+th,
+td {
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    outline: 0;
+}
+
+img {
+    border: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+#root {
+    height: 100%;
+    min-height: 100%;
+}
+
+a {
+    color: @link;
+    text-decoration: none;
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+    width: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #D4D4D4;
+}
+
+.container {
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+// 常用的less语句块
+.f-toe {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+    white-space: nowrap;
+}
+
+.f-cp {
+    cursor: pointer;
+}
+
+.f-tac {
+    text-align: center;
+}
+
+.f-fl {
+    float: left;
+}
+
+.f-fr {
+    float: right;
+}
+
+.f-fwb {
+    font-weight: 700;
+}
+
+.f-tar {
+    text-align: right;
+}
+
+// 常用字体颜色
+.f-success {
+    color: @success;
+}
+
+.f-warning {
+    color: @warning;
+}
+
+.f-danger {
+    color: @danger;
+}
+
+.f-link {
+    color: @link;
+}
+
+.f-disbled {
+    color: @disable-font;
+}
