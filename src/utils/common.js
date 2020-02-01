@@ -19,9 +19,4 @@ export const debounce = (fn, t) => {
 }
 
 // 获取当前页面url
-export const getCurrentPageUrl = () => {
-  let pages = Taro.getCurrentPages()
-  let currentPage = pages[pages.length - 1]
-  let url = currentPage.route
-  return url
-}
+export const getCurrentPageUrl = () => Taro._$router.path

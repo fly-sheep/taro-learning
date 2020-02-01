@@ -1,7 +1,8 @@
 import Taro, { Component } from '@tarojs/taro'
-import { Swiper, SwiperItem, View, Button } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { AtButton } from 'taro-ui'
 import { get } from '@/service/tool'
+import { loginIn } from '@/service'
 import './index.less'
 
 export default class Index extends Component {
@@ -21,7 +22,8 @@ export default class Index extends Component {
 
   componentDidHide() {}
 
-  onClick = () => {
+  // 普通请求方式
+  onClick1 = () => {
     Taro.request({
       url: 'https://zhaopin.netease.com/api/ats/ruleGuide?postStatus=1&type=1',
       success: () => {
@@ -42,9 +44,12 @@ export default class Index extends Component {
     })
   }
 
+  // 第一次进化
   onClick2 = () => {
     get({
-      url: 'https://zhaopin.netease.com/api/ats/ruleGuide?postStatus=1&type=1'
+      showLoading: true,
+      url: 'https://zhaopin.netease.com/api/ats/ruleGuide?postStatus=1&type=1',
+      data: { id: 1 }
     })
       .then(res => {
         console.log(res, 'then')
@@ -57,25 +62,27 @@ export default class Index extends Component {
       })
   }
 
+  // 第二次进化
+  onClick3 = () => {
+    loginIn({
+      data: { id: 1 }
+    }).then(res => {
+      console.log(res, 'then')
+    })
+  }
+
   render() {
     return (
       <View className="p-home">
-        <Swiper className="test-h" indicatorColor="#999" indicatorActiveColor="#333" vertical circular indicatorDots autoplay>
-          <SwiperItem>
-            <View className="demo-text-1">1</View>
-          </SwiperItem>
-          <SwiperItem>
-            <View className="demo-text-2">2</View>
-          </SwiperItem>
-          <SwiperItem>
-            <View className="demo-text-3">3</View>
-          </SwiperItem>
-        </Swiper>
-        <Button onClick={this.onClick} className="f-success">
-          按钮
-        </Button>
+        <View style={{ height: 100 }}>占位符</View>
+        <AtButton type="primary" onClick={this.onClick1} className="f-success">
+          原生方式请求
+        </AtButton>
         <AtButton type="primary" className="f-success" onClick={this.onClick2}>
-          按钮文案
+          封装方法请求1
+        </AtButton>
+        <AtButton type="primary" className="f-success" onClick={this.onClick3}>
+          封装方法请求2
         </AtButton>
       </View>
     )

@@ -1,6 +1,5 @@
 import Taro from '@tarojs/taro'
-import { getCurrentPageUrl } from '@/utils/common'
-import { ServerCode, ServerCodeMap, baseURL } from './config'
+import { ServerCode, ServerCodeMap, BASE_URL } from './config'
 
 // 错误提示
 const showError = (message, show = true) => {
@@ -22,7 +21,8 @@ const customInterceptor = chain => {
     .catch(res => {
       console.log(res)
       debugger
-      // 这个catch需要放到前面才能捕获request本身的错误，因为showError返回的也是Promise.reject
+      // 这个catch需要放到前面才能捕获request本身的错误
+      Taro.hideLoading() // 强制取消加载动画
       return showError(res.errMsg)
     })
     .then(res => {
@@ -32,6 +32,9 @@ const customInterceptor = chain => {
        * data.code 接口返回状态码（前后端约定）
        */
       console.log(res)
+
+      Taro.hideLoading() // 强制取消加载动画
+
       let { statusCode } = res,
         data = res.data || {},
         code = data.code ? data.code : statusCode
@@ -40,12 +43,9 @@ const customInterceptor = chain => {
 
       // 未登录
       if (code === ServerCode.NO_LOGIN) {
-        let path = getCurrentPageUrl()
-        if (path !== 'pages/login/index') {
-          Taro.navigateTo({
-            url: '/pages/login/index'
-          })
-        }
+        Taro.navigateTo({
+          url: '/pages/login/index'
+        })
         return showError(data.msg || ServerCodeMap[code])
       }
 
@@ -60,17 +60,24 @@ const customInterceptor = chain => {
 
 // 请求前基础配置
 const baseOptions = (params, method = 'GET') => {
-  let { url, data } = params
+  let { url, data, showLoading } = params
   let contentType = 'application/json'
   contentType = params.contentType || contentType
   const option = {
-    url: url.includes('http') || url.includes('https') ? url : baseURL + url,
+    url: url.includes('http') || url.includes('https') ? url : BASE_URL + url,
     data: data,
     method: method,
     header: {
       'content-type': contentType
     }
   }
+
+  // 加载动画
+  showLoading &&
+    Taro.showLoading({
+      title: 'loading'
+    })
+
   return Taro.request(option)
 }
 

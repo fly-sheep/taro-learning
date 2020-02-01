@@ -2,7 +2,6 @@ import Taro, { Component } from '@tarojs/taro'
 import Index from '@/pages/index'
 import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
 // import '@/assets/css/index.less'
-import './app.less'
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：

@@ -7,7 +7,9 @@ export default class Personal extends Component {
     navigationBarTitleText: '登录页'
   }
 
-  componentWillMount() {}
+  componentWillMount() {
+    console.log(Taro)
+  }
 
   componentDidMount() {}
 

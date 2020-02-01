@@ -1,8 +1,17 @@
 // 当前的接口联调环境
 export const isDev = process.env.NODE_ENV === 'development'
-export const isMock = false
-export const isTest = true
-export const baseURL = isDev ? (isMock ? '/mock' : isTest ? '/mock/test' : '/mock/dev') : '/'
+export const isMock = true
+export const isTest = false
+
+let baseURL
+// H5
+if (process.env.TARO_ENV === 'h5') {
+  baseURL = isDev ? (isMock ? '/mock' : isTest ? '/mock/test' : '/mock/dev') : '/'
+} else {
+  baseURL = isDev ? (isMock ? 'http://127.0.0.1:3000' : isTest ? 'http://10.171.160.132:8800' : 'http://10.171.160.65:8800') : '/'
+}
+
+export const BASE_URL = baseURL
 
 // 状态码
 export const ServerCode = {
