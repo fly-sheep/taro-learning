@@ -81,6 +81,6 @@
     "stylelint-config-recess-order": "^2.0.3",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-config-taro-rn": "2.0.2",
-    "stylelint-taro-rn": "2.0.2",
+    "stylelint-taro-rn": "2.0.2"
   }
 }
