@@ -1,0 +1,33 @@
+.m-poster {
+
+    // 图片预览
+    .shareImage-preview {
+        position: flex;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        .mask {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, .45);
+        }
+
+        .wrap {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            z-index: 1000;
+            overflow: auto;
+            text-align: center;
+            transform: translateX(-50%);
+            scroll-behavior: smooth;
+        }
+    }
+}

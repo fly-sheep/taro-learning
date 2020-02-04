@@ -52,6 +52,7 @@
     "@tarojs/taro-weapp": "2.0.2",
     "nerv-devtools": "^1.5.5",
     "nervjs": "^1.5.5",
+    "taro-plugin-canvas": "^1.0.9",
     "taro-ui": "^2.2.4"
   },
   "devDependencies": {
@@ -80,6 +81,6 @@
     "stylelint-config-recess-order": "^2.0.3",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-config-taro-rn": "2.0.2",
-    "stylelint-taro-rn": "2.0.2"
+    "stylelint-taro-rn": "2.0.2",
   }
 }

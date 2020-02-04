@@ -74,7 +74,7 @@ export default class Index extends Component {
   render() {
     return (
       <View className="p-home">
-        <View style={{ height: 100 }}>占位符</View>
+        <View style={{ height: '100px' }}>占位符1</View>
         <AtButton type="primary" onClick={this.onClick1} className="f-success">
           原生方式请求
         </AtButton>

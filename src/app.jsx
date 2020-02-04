@@ -26,7 +26,7 @@ class App extends Component {
           pagePath: 'pages/index/index'
         },
         {
-          text: '热招职位',
+          text: '海报长图',
           pagePath: 'pages/position/index'
         },
         {
@@ -36,14 +36,6 @@ class App extends Component {
       ]
     }
   }
-
-  componentDidMount() {}
-
-  componentDidShow() {}
-
-  componentDidHide() {}
-
-  componentDidCatchError() {}
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数

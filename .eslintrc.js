@@ -31,6 +31,8 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 'off',
 
     'import/no-commonjs': 'off',
+
+    'react/no-string-refs': 'off'
   },
 
   "parser": "babel-eslint",

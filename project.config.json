@@ -2,7 +2,7 @@
 	"miniprogramRoot": "dist/",
 	"projectname": "taro-learning-pro",
 	"description": "taro learning",
-	"appid": "touristappid",
+	"appid": "wx4d1726770ebcaa60",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,

@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Button } from '@tarojs/components'
+import Poster from '@/components/poster'
 import './index.less'
 
 export default class Position extends Component {
@@ -7,20 +8,12 @@ export default class Position extends Component {
     navigationBarTitleText: '热招职位'
   }
 
-  componentWillMount() {}
-
-  componentDidMount() {}
-
-  componentWillUnmount() {}
-
-  componentDidShow() {}
-
-  componentDidHide() {}
-
   render() {
     return (
       <View className="p-position">
-        <Text>热招职位</Text>
+        <Poster>
+          <Button>绘制1</Button>
+        </Poster>
       </View>
     )
   }
