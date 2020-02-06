@@ -11,7 +11,7 @@ import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
 
 class App extends Component {
   config = {
-    pages: ['pages/index/index', 'pages/position/index', 'pages/personal/index', 'pages/login/index'],
+    pages: ['pages/position/index', 'pages/index/index', 'pages/personal/index', 'pages/login/index'],
     window: {
       backgroundTextStyle: 'light', // 下拉 loading 的样式，仅支持 dark / light
       navigationBarBackgroundColor: '#c22b2b', // 导航栏背景颜色
@@ -22,12 +22,12 @@ class App extends Component {
       selectedColor: '#c22b2b',
       list: [
         {
-          text: '首页',
-          pagePath: 'pages/index/index'
-        },
-        {
           text: '海报长图',
           pagePath: 'pages/position/index'
+        },
+        {
+          text: '首页',
+          pagePath: 'pages/index/index'
         },
         {
           text: '个人中心',
