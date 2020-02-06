@@ -388,7 +388,6 @@ export default class Painter {
 
     this.ctx.fillStyle = view.css.color || 'black'
     const { lines, lineHeight, textArray, linesArray } = extra
-    console.log('extra', extra)
     // 如果设置了id，则保留 text 的长度
     if (view.id) {
       let textWidth = 0

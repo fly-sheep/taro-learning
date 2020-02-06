@@ -64,6 +64,7 @@ Component({
     },
 
     startPaint() {
+      let that = this
       if (this.isEmpty(this.properties.palette)) {
         return
       }
@@ -225,7 +226,6 @@ Component({
           that.paintCount++
         },
         fail: error => {
-          debugger
           console.error(`getImageInfo failed, ${JSON.stringify(error)}`)
           that.triggerEvent('imgErr', {
             error: error
